@@ -28,29 +28,23 @@
         %a.navbar-brand(href="/") PortalNoticias
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li= link_to "Inicio", "#"
-            %li= link_to "Deportes", "#"
-            %li= link_to "Salud", "#"
-            %li= link_to "Tecnologia", "#"
-            %li= link_to "Sucesos", "#"
-            %li= link_to "Entretenimiento", "#"
-            %li= link_to "Mundo", "#"
-            %li= link_to "Ciencia", "#"
-            %li= link_to "Economia", "#"
-            %li= link_to "Mundo", "#"
-            %li#sign-in-option
-              %a{:href=>'#'}
-                %i.fa.fa-lg.fa-user
-              %ul.sign-in
-                %li
-                  %button.btn.btn-primary Iniciar sesion
-                %li
-                  %button.btn.btn-primary Iniciar sesion con Google
-                %li
-                  %button.btn.btn-primary Registrar
+            %li
+              %a{:href=>"#", :id=> 0 } Inicio
+            - @categories.each do |category|
+              %li 
+                %a{:href=>"#", :id=> category.id } 
+                  =category.name
+
+            =render 'login' 
+
             %li
               %a{:href=>'#'}
                 %i.fa.fa-lg.fa-search
+            - if user_signed_in?
+              %li
+                %a{:href=>'#'}
+                  %i.fa.fa-pencil.fa-lg
+
 
 
     .container
@@ -63,7 +57,7 @@
 
           %ul.posts-list
             - @posts.each do |post|
-              %li.shadowed
+              %li
                 %div.row
                   %div.col-md-4
                     %img.pull-left{:src => asset_path("image.png"), :alt=> 'Imagen de la noticia'}
@@ -85,7 +79,7 @@
 
                     %p= post.description
 
-                    %a{:href=>'post.link'} Seguir Link
+                    %a{:href=>post.link} Seguir Link
 
                   %ul.social-info
                     %li
@@ -112,6 +106,6 @@
               %li= link_to "Otra noticia inventada", "#"
               %li= link_to "Nasa organiza evento en el TEC sede Cartago", "#"
               %li= link_to "Accidente en la ruta 32 deja 4 heridos", "#"
-    %footer.shadowed
+    %footer
       %a{:href => 'https://github.com/BADSA'}
         %p &copy; BADSA Corp 2015
