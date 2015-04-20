@@ -3,9 +3,16 @@
 %table
   %thead
     %tr
-      %th Name
       %th Title
+      %th Description
       %th Content
+      %th Link
+      %th Userid
+      %th Date
+      %th Catid
+      %th Votes
+      %th Numcomments
+      %th Status
       %th
       %th
       %th
@@ -13,9 +20,16 @@
   %tbody
     - @posts.each do |post|
       %tr
-        %td= post.name
         %td= post.title
+        %td= post.description
         %td= post.content
+        %td= post.link
+        %td= post.userId
+        %td= post.date
+        %td= post.catId
+        %td= post.votes
+        %td= post.numComments
+        %td= post.status
         %td= link_to 'Show', post
         %td= link_to 'Edit', edit_post_path(post)
         %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
