@@ -50,3 +50,12 @@ gem 'haml-rails'
 
 # Gon to pass variable from rails to javascript
 gem 'gon'
+
+
+
+#Devise for user accounts
+gem 'devise'
+
+#For omniauth
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
