@@ -6,7 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-new = New.create([
-	{ title: 'Una noticia',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:2,catId:4,likes:3 },
- 	{ title: 'Otra noticia',description:'sdfsfdsfdsfd',content:'',link:'yo soy un link',userId:2,catId:4,likes:3 }
+posts = Post.create([
+	{ title: 'Una noticia',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:2, date:'',catId:4,votes:3,numComments:4,status:'online'},
+	{ title: 'Una noticia',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:2, date:'',catId:4,votes:3,numComments:4,status:'online'},
+	{ title: 'Una noticia',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:2, date:'',catId:4,votes:3,numComments:4,status:'online'},
+	{ title: 'Una noticia',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:2, date:'',catId:4,votes:3,numComments:4,status:'online'},
+	{ title: 'Una noticia',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:2, date:'',catId:4,votes:3,numComments:4,status:'online'}
  ])

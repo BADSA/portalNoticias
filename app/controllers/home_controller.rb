@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @news = New.all
+    @posts = Post.all
   end
 end
