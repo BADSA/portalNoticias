@@ -42,9 +42,12 @@
               %a{:href=>'#'}
                 %i.fa.fa-lg.fa-user
               %ul.sign-in
-                %li= link_to "Iniciar con Facebook",""
-                %li= link_to "Iniciar con Twitter",""
-                %li= link_to "Registrarse",""
+                %li
+                  %button.btn.btn-primary Iniciar sesion
+                %li
+                  %button.btn.btn-primary Iniciar sesion con Google
+                %li
+                  %button.btn.btn-primary Registrar
             %li
               %a{:href=>'#'}
                 %i.fa.fa-lg.fa-search
@@ -58,34 +61,40 @@
           %h1 Ultimas noticias
 
 
-          %ul.news-list
-            - @news.each do |new|
+          %ul.posts-list
+            - @posts.each do |post|
               %li.shadowed
                 %div.row
                   %div.col-md-4
                     %img.pull-left{:src => asset_path("image.png"), :alt=> 'Imagen de la noticia'}
 
                   %div.col-md-8
-                    %h3= new.title
+                    %h3= post.title
 
-                    %p= new.description
 
-                    %a{:href=>'new.link'} Seguir Link
-                    %br
+                    %ul.footer-info
+                      %li 
+                        Fecha
+                        = post.date
+                      %li
+                        Usuario 
+                        = post.userId
+                      %li
+                        Categoria
+                        = post.catId
 
-                    %label Fecha:
-                    %strong= new.date
-                    %br
+                    %p= post.description
 
-                    %label Autor:
-                    %strong= new.userId
-                    %br
+                    %a{:href=>'post.link'} Seguir Link
 
-                    %label Categoria:
-                    %strong= new.catId
-                    %br
-                    
-                    %i.fa.fa-thumbs-o-up.fa-2x= new.likes
+                  %ul.social-info
+                    %li
+                      =post.votes
+                      %i.fa.fa-thumbs-o-up.fa-lg Me gusta
+                    %li
+                      =post.numComments
+                      %i.fa.fa-comments-o.fa-lg Comentarios 
+                      
                 
 
           %br

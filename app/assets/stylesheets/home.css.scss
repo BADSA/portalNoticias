@@ -2,7 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$default-font-size: 1.2em;
+$default-font-size: 1.1em;
+
+$big-font-size: 1.2em;
+$medium-font-size: 1em;
+$small-font-size: 0.9em;
 
 /*
 %big{
@@ -23,6 +27,10 @@ body{
 	background-color:#ddd !important;
 }
 
+h1,h2,h3,h4,h5{
+	margin-bottom: 0;
+}
+
 .navbar{
 	height:50px !important;
 }
@@ -32,17 +40,39 @@ body{
 	top:-30%;
 }
 
-.news-list li{
+.posts-list>li{
 	font-size: $default-font-size;
 	background-color: rgba(255, 255, 255, 0.6);	
 	padding:15px;
 	margin-bottom:2px;
 	height:100%;
+	position: relative;
 
 	img{
 		width:90%;
 		height:90%;
 		margin:25px;
+	}
+	.footer-info li{
+		display: inline;
+		position: relative;
+		right:43px;
+		font-size: $medium-font-size;
+		border-right: #444 solid 1px;
+		padding: 0 4px;
+		&:last-child{
+			border-right: none;
+		}
+	}
+	.social-info{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		margin:0 10px 10px 0;
+		li{
+			display: inline;
+			padding: 0 9px;
+		}
 	}
 }
 
@@ -52,9 +82,6 @@ body{
     -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);			
 }
 
-
-
-
 .sign-in{
 	position:absolute;
 	z-index:1000;
@@ -62,15 +89,11 @@ body{
 	background-color: #999;
 	border-radius:15px;
 	padding-bottom:10px;
-}
+	text-align: center;
 
-.sign-in>li{
-	position:relative;
-	padding:5px 30px;
-	right:15%;
-	margin-top:5px;
-	background-color: rgba(255,255,255,0.15);
-	border-radius:5px;
+	li{
+		margin-bottom: 10px;
+	}
 }
 
 #sign-in-option:hover .sign-in{
@@ -84,8 +107,6 @@ body{
 .fa-thumbs-o-up:hover{
 	color:blue;
 }
-
-
 
 // FOOTER STYLES
 

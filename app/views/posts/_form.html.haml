@@ -7,13 +7,34 @@
           %li= msg
 
   .field
-    = f.label :name
-    = f.text_field :name
-  .field
     = f.label :title
     = f.text_field :title
   .field
+    = f.label :description
+    = f.text_field :description
+  .field
     = f.label :content
     = f.text_area :content
+  .field
+    = f.label :link
+    = f.text_field :link
+  .field
+    = f.label :userId
+    = f.number_field :userId
+  .field
+    = f.label :date
+    = f.datetime_select :date
+  .field
+    = f.label :catId
+    = f.number_field :catId
+  .field
+    = f.label :votes
+    = f.number_field :votes
+  .field
+    = f.label :numComments
+    = f.number_field :numComments
+  .field
+    = f.label :status
+    = f.text_field :status
   .actions
     = f.submit 'Save'
