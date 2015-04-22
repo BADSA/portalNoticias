@@ -1,26 +1,27 @@
 $(document).ready(function () {
+  var home = 'Home';
+  filterByCategory(home);
 
-  var home = 0;
 
-  $.ajax({
-    method: "get",
-    url: "/posts",
-    data : { categoryID : home }
-    //data: {product: {name:"Un saludo para el otro james", price: 9999, description:"Que risa con jaime"} }
-
-  }).done(function(data){
-    $(".posts-list").html(data);
+  $('.category').click(function (e) {
+    var catId = $(this).attr("id");
+    console.log(catId);
+    filterByCategory(catId);
   });
 
-  $('.category').click(function () {
-    var catID = $(this).attr("value");
+
+  function filterByCategory(catId){
     $.ajax({
       method: "get",
       url: "/posts",
-      data : { categoryID : catID }
+      async:false,
+      data : { category : catId }
     }).done(function(data){
       $(".posts-list").html(data);
     });
-  });
+  }
+
+
+
 
 });
