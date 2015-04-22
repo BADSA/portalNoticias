@@ -26,8 +26,7 @@ categories = Category.create([
 	{ name: 'Entretenimiento',description:'Descripcion Entretenimiento'},
 	{ name: 'Mundo',description:'Descripcion Mundo'},
 	{ name: 'Ciencia',description:'Descripcion Ciencia'},
-	{ name: 'Economia',description:'Descripcion Economia'},
-	{ name: 'Mundo',description:'Descripcion Mundo'}
+	{ name: 'Economia',description:'Descripcion Economia'}
 ])
 
 
