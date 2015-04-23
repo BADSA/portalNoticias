@@ -16,6 +16,7 @@ class PostsController < ApplicationController
         @posts = Post.all
       end
     end
+    @posts = Post.where(:status => "accepted" )
     render :layout => false
   end
 
