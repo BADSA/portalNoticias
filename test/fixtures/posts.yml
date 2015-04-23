@@ -6,8 +6,8 @@ one:
   content: MyText
   link: MyString
   userId: 1
-  date: 2015-04-20 00:11:35
-  catId: 1
+  date: 2015-04-22 09:36:25
+  category: MyString
   votes: 1
   numComments: 1
   status: MyString
@@ -18,8 +18,8 @@ two:
   content: MyText
   link: MyString
   userId: 1
-  date: 2015-04-20 00:11:35
-  catId: 1
+  date: 2015-04-22 09:36:25
+  category: MyString
   votes: 1
   numComments: 1
   status: MyString

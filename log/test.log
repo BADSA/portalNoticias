@@ -1,0 +1,114 @@
+  [1m[36m (65.0ms)[0m  [1mDROP DATABASE IF EXISTS `test-mysql2_test`[0m
+  [1m[35m (18.4ms)[0m  CREATE DATABASE `test-mysql2_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`
+  [1m[36m (129.0ms)[0m  [1mCREATE TABLE `categories` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `description` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (109.9ms)[0m  CREATE TABLE `posts` (`id` int(11) auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `content` text, `link` varchar(255), `userId` int(11), `date` datetime, `category` varchar(255), `votes` int(11), `numComments` int(11), `status` varchar(255), `likes` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (98.5ms)[0m  [1mCREATE TABLE `users` (`id` int(11) auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime, `updated_at` datetime, `provider` varchar(255), `uid` varchar(255), `name` varchar(255), `manager` tinyint(1)) ENGINE=InnoDB[0m
+  [1m[35m (223.8ms)[0m  CREATE UNIQUE INDEX `index_users_on_email` USING btree ON `users` (`email`) 
+  [1m[36m (155.7ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_reset_password_token` USING btree ON `users` (`reset_password_token`) [0m
+  [1m[35m (109.9ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (178.2ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) [0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (32.7ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20150422165621')[0m
+  [1m[35m (33.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20150420012009')
+  [1m[36m (33.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20150420014340')[0m
+  [1m[35m (33.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20150422124026')
+  [1m[36m (33.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20150420013857')[0m
+  [1m[35m (33.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20150422093625')
+  [1m[36m (33.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20150420015039')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (13.9ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (17.8ms)[0m  DELETE FROM `posts`
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:32', '2015-04-23 00:37:32', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:32', '2015-04-23 00:37:32', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM `users`[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:32', '2015-04-23 00:37:32', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:32', '2015-04-23 00:37:32', 298486374)[0m
+Mysql2::Error: Duplicate entry '' for key 'index_users_on_email': INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:32', '2015-04-23 00:37:32', 298486374)
+  [1m[35m (75.8ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.4ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM `posts`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:32', '2015-04-23 00:37:32', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:32', '2015-04-23 00:37:32', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM `users`
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:32', '2015-04-23 00:37:32', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:32', '2015-04-23 00:37:32', 298486374)
+Mysql2::Error: Duplicate entry '' for key 'index_users_on_email': INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:32', '2015-04-23 00:37:32', 298486374)
+  [1m[36m (58.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM `posts`
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:32', '2015-04-23 00:37:32', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:32', '2015-04-23 00:37:32', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM `users`[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:32', '2015-04-23 00:37:32', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:32', '2015-04-23 00:37:32', 298486374)[0m
+Mysql2::Error: Duplicate entry '' for key 'index_users_on_email': INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:32', '2015-04-23 00:37:32', 298486374)
+  [1m[35m (36.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM `posts`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:33', '2015-04-23 00:37:33', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM `users`
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)
+Mysql2::Error: Duplicate entry '' for key 'index_users_on_email': INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)
+  [1m[36m (37.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.2ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `posts`
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:33', '2015-04-23 00:37:33', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM `users`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)[0m
+Mysql2::Error: Duplicate entry '' for key 'index_users_on_email': INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)
+  [1m[35m (37.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM `posts`[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:33', '2015-04-23 00:37:33', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM `users`
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)
+Mysql2::Error: Duplicate entry '' for key 'index_users_on_email': INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)
+  [1m[36m (38.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.2ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `posts`
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:33', '2015-04-23 00:37:33', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM `users`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)[0m
+Mysql2::Error: Duplicate entry '' for key 'index_users_on_email': INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)
+  [1m[35m (35.6ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM `posts`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:33', '2015-04-23 00:37:33', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `posts` (`title`, `description`, `content`, `link`, `userId`, `date`, `category`, `votes`, `numComments`, `status`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyText', 'MyString', 1, '2015-04-22 09:36:25', 'MyString', 1, 1, 'MyString', '2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM `users`
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)
+Mysql2::Error: Duplicate entry '' for key 'index_users_on_email': INSERT INTO `users` (`created_at`, `updated_at`, `id`) VALUES ('2015-04-23 00:37:33', '2015-04-23 00:37:33', 298486374)
+  [1m[36m (37.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 1

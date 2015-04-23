@@ -1,40 +1,22 @@
-= form_for @post do |f|
-  - if @post.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-      %ul
-        - @post.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_field :description
-  .field
-    = f.label :content
-    = f.text_area :content
-  .field
-    = f.label :link
-    = f.text_field :link
-  .field
-    = f.label :userId
-    = f.number_field :userId
-  .field
-    = f.label :date
-    = f.datetime_select :date
-  .field
-    = f.label :catId
-    = f.number_field :catId
-  .field
-    = f.label :votes
-    = f.number_field :votes
-  .field
-    = f.label :numComments
-    = f.number_field :numComments
-  .field
-    = f.label :status
-    = f.text_field :status
-  .actions
-    = f.submit 'Save'
+.well
+  = form_for @post do |f|
+    .form-group
+      %label.control-label Titulo de la noticia
+      = f.text_field :title, :class => "form-control", maxlength: "80"
+    .form-group
+      %label.control-label Categoría
+      = f.select(:category, ['Mundo', 'Sucesos', 'Deportes', 'Entretenimiento', 'Tecnologia', 'Ciencia', 'Salud', 'Economia'], {}, { :class => 'form-control'})
+    .form-group
+      %label.control-label Descripcion de la noticia
+      %p#summary-length 450
+      = f.text_area :description, :class => "form-control", :id => "input-summary", maxlength: "450", rows: "5"
+    .form-group
+      %label.control-label Cuerpo de la noticia
+      %p#body-length 5000
+      = f.text_area :content, :class => "form-control", :id => "input-body", maxlength: "5000", rows: "10"
+    .form-group
+      %label.control-label Enlace de referencia
+      = f.text_field :link, :class => "form-control"
+    .actions
+      = f.submit "Crear", :class => "btn btn-default final-button"
+%script{:src => "/assets/create_post.js" }

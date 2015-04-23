@@ -25,28 +25,37 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand(href="/") PortalNoticias
-        .navbar-collapse.collapse.navbar-responsive-collapse
+        %a.navbar-brand.category{:id=> 'Home', :href=>"/"} PortalNoticias
+
+        .navbar-collapse.collapse.navbar-responsive-collapse.pull-right.header-buttons
           %ul.nav.navbar-nav
-            %li.category{:value=> 0}
-              %a Inicio
-            - @categories.each do |category|
-              %li.category{:value=> category.id}
-                %a
-                  =category.name
-
-            =render 'login'
-
             %li
-              %a{:href=>'#'}
-                %i.fa.fa-lg.fa-search
+              = text_field_tag 'request', nil, class: 'form-control special_input' , maxlength: "50",id: 'search-textbox'
+
             - if user_signed_in?
               %li
-                %a{:href=>'#'}
-                  %i.fa.fa-pencil.fa-lg
+                %a
+                  %i.fa.fa-lg.fa-search{:title => "Buscar",:id => 'search-btn'}            
+              %li
+                %a{:href=>edit_user_registration_path}
+                  %i.fa.fa-lg.fa-user{:title => "Perfil"}
+                  =current_user.name
+              %li
+                %a{:href=>new_post_path}
+                  %i.fa.fa-pencil.fa-lg{:title => "Escribir noticia"}
+              %li
+                = link_to destroy_user_session_path, method: :delete do
+                  %i.fa.fa-power-off.fa-lg{:title => "Salir"} 
+
+            - else
+              %li
+                %a
+                  %i.fa.fa-lg.fa-search{:title => "Buscar",:id => 'search-btn'}
+              =render 'login'
+                  
 
 
-    .container
+    .container.main 
       = yield
 
 
@@ -55,3 +64,4 @@
     %footer
       %a{:href => 'https://github.com/BADSA'}
         %p &copy; BADSA Corp 2015
+    %script{:src => "/assets/home.js" }

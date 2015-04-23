@@ -10,6 +10,7 @@ $small-font-size: 0.9em;
 
 $bg-color:#ddd;
 $bg-color-elements:#f3f3f3;
+$submenu-color:#CCCCCC;
 
 
 $letter-color:#7C7C7C;
@@ -20,8 +21,11 @@ $letter-color:#7C7C7C;
 }
 @extend %big;
 */
+*{
+	box-sizing: border-box !important;
+}
 
-a{text-decoration:none;}
+a{text-decoration:none;cursor: pointer;}
 
 li{ list-style:none; }
 
@@ -29,9 +33,64 @@ body{ background-color:$bg-color !important; }
 
 h1,h2,h3,h4,h5{ margin-bottom: 0; }
 
+.navbar{
+	margin-bottom: 0;
+}
+
+.category-div{
+	padding:0;
+}
+
+
+
+%submenu{
+	@extend %hard-shadowed;
+	width: 100%;
+	border-top: 1px black solid;
+	background-color: $submenu-color;
+	margin-bottom: 20px;
+	li{
+		a{
+			padding: 10px;
+		}
+		&:hover a{
+			border-bottom: 3px solid #444;
+			background-color: #999 !important;
+			padding-bottom: 7px;
+		}
+	}
+}
+
+.category-list,.nav-pills{
+	@extend %submenu;
+}
+
 .search{
 	position:relative;
 	top:-30%;
+}
+
+
+%post-footer{
+	display: inline;
+	position: relative;
+	right:43px;
+	font-size: $medium-font-size;
+	border-right: #444 solid 1px;
+	padding: 0 4px;
+	&:last-child{
+		border-right: none;
+	}	
+}
+
+.footer-info li{
+	@extend %post-footer;
+}
+
+.preview{
+	width:90%;
+	height:90%;
+	margin:25px;
 }
 
 .posts-list>li{
@@ -43,22 +102,10 @@ h1,h2,h3,h4,h5{ margin-bottom: 0; }
 	margin-bottom:2px;
 	height:100%;
 	position: relative;
-
 	img{
 		width:90%;
 		height:90%;
-		margin:25px;
-	}
-	.footer-info li{
-		display: inline;
-		position: relative;
-		right:43px;
-		font-size: $medium-font-size;
-		border-right: #444 solid 1px;
-		padding: 0 4px;
-		&:last-child{
-			border-right: none;
-		}
+		margin:25px;		
 	}
 	.social-info{
 		position: absolute;
@@ -72,7 +119,9 @@ h1,h2,h3,h4,h5{ margin-bottom: 0; }
 	}
 }
 
-
+.header-buttons{
+	margin-right: 3% !important;
+}
 
 %soft-shadowed{
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
@@ -98,6 +147,7 @@ h1,h2,h3,h4,h5{ margin-bottom: 0; }
 	border-radius:15px;
 	padding-bottom:10px;
 	text-align: center;
+	right: 0;
 	padding-left: 10 !important;
 	padding: 20px 10px;
 	input{
@@ -129,6 +179,10 @@ h1,h2,h3,h4,h5{ margin-bottom: 0; }
 	color:black;
 }
 
+#search-textbox{
+	margin-top:8px;
+}
+
 
 
 
@@ -140,6 +194,12 @@ footer {
 	width:100%;
 	height:60px;
 	text-align:center;
+
+ 	clear: both;
+    position: relative;
+    z-index: 10;
+    margin-top:10px;
+
 	p{
 		color:$letter-color;
 		font-size:1.4em;
@@ -149,4 +209,47 @@ footer {
 			color:black;
 		}	
 	}
+}
+
+
+
+// SIGN UP FORM
+.sign_up_form{
+	@extend %soft-shadowed;
+}
+
+
+.manage-post-buttons{
+	position: absolute;
+	right: 0;
+	top:0;
+	margin-right: 20px;
+	margin-top: 20px;
+	li{
+		display: inline-block;
+		padding: 10px 10px;
+	}
+}
+
+
+.users-list{
+	text-align: center;
+	.user-element{
+		cursor: pointer;
+		@extend %hard-shadowed;
+		padding: 25px;
+		margin: 10px;
+		background-color: $submenu-color;
+		display: inline-block;
+	}
+}
+
+.superuser{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.blue{
+	background-color: blue !important;
 }

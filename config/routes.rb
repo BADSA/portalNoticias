@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-
   resources :posts
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   
-  #get 'home/index'
+  devise_scope :user do
+    get 'users/post_status' , to: 'users/registrations#post_status',:as => "user_posts_status"
+  end
+  
+  get '/manage', to: 'posts#manage'
+
+  get '/makemanager', to: 'posts#makemanager'
+
+  get '/rootuser', to: 'posts#rootuser'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
