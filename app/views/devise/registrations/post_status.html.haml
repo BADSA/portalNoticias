@@ -23,6 +23,10 @@
                 = post.category
             %p= post.description
             %a{:href=>post.link} Seguir Link
+            - if post.status=='rejected'
+              %hr
+              %h4 Justificacion:
+              %p= post.justification
 
           - if current_user.manager==true
             %ul.manage-post-buttons
