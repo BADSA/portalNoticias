@@ -33,6 +33,14 @@ posts = Post.create([
 	{ title: 'Una noticia12',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:2, date:'',category:'Entretenimiento',votes:3,numComments:4,status:'pending'},
 	{ title: 'Una noticia13',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:2, date:'',category:'Entretenimiento',votes:3,numComments:4,status:'accepted'},
 	{ title: 'Una noticia14',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:2, date:'',category:'Entretenimiento',votes:3,numComments:4,status:'accepted'},
-	{ title: 'Una noticia15',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:2, date:'',category:'Entretenimiento',votes:3,numComments:4,status:'accepted'}
+	{ title: 'Una noticia15',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:2, date:'',category:'Entretenimiento',votes:3,numComments:4,status:'accepted'},
+
+
+	{ title: 'Una noticia10',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:4, date:'',category:'Entretenimiento',votes:3,numComments:4,status:'accepted'},
+	{ title: 'Una noticia11',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:4, date:'',category:'Entretenimiento',votes:3,numComments:4,status:'rejected'},
+	{ title: 'Una noticia12',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:5, date:'',category:'Entretenimiento',votes:3,numComments:4,status:'pending'},
+	{ title: 'Una noticia13',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:6, date:'',category:'Entretenimiento',votes:3,numComments:4,status:'accepted'},
+	{ title: 'Una noticia14',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:9, date:'',category:'Entretenimiento',votes:3,numComments:4,status:'accepted'},
+	{ title: 'Una noticia15',description:'jshdskjhdasjd',content:'soy el contenido',link:'',userId:10, date:'',category:'Entretenimiento',votes:3,numComments:4,status:'accepted'}
  ])
 

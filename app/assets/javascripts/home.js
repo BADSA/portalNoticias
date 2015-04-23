@@ -2,13 +2,12 @@ $(document).ready(function () {
   var home = 'Home';
   filterByCategory(home);
   $('#search-textbox').hide();
-
+  $(".active").removeClass("active");
 
   $(".main").height($(window).height()-70);
 
   $('.category').click(function (e) {
     var catId = $(this).attr("id");
-    console.log(catId);
     filterByCategory(catId);
   });
 

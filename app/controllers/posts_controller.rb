@@ -6,17 +6,17 @@ class PostsController < ApplicationController
   def index
     cat = params[:category]
     if  cat!= 'Home' and cat!=nil
-      @posts = Post.where(:category => cat )
+      @posts = Post.where(:category => cat ).where(:status => "accepted" )
     else
       keywords = params[:keywords]
       if keywords!=nil
         where_clause = "( title LIKE ? OR description LIKE ? OR content LIKE ?)"
-        @posts = Post.where(where_clause, '%'+keywords+'%','%'+keywords+'%','%'+keywords+'')  
+        @posts = Post.where(where_clause, '%'+keywords+'%','%'+keywords+'%','%'+keywords+'').where(:status => "accepted" )  
       else
-        @posts = Post.all
+        @posts = Post.where(:status => "accepted" )
       end
     end
-    @posts = Post.where(:status => "accepted" )
+    
     render :layout => false
   end
 
@@ -69,7 +69,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.status = "pending"
+    if current_user.manager==false
+      @post.status = "pending"
+    else
+      @post.status = "accepted"
+    end
     @post.userId = current_user.id
     @post.votes = 0
     @post.numComments = 0
