@@ -57,4 +57,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  def post_status
+    @statusColors = {:pending=>'info' ,:accepted=>'success', :rejected=>'danger', :vetoed=>'warning'}
+    @color = nil
+    stat = params[:status]
+    if current_user.manager==true
+      @posts = Post.where(:status => 'pending')
+    else 
+      intId = Integer(current_user.id)
+      @color = @statusColors[ stat.to_sym ]
+      @posts = Post.where(:userId => intId).where(:status => stat)
+    end
+    render :layout => false
+  end
+
 end

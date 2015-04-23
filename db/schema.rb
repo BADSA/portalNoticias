@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422093625) do
+ActiveRecord::Schema.define(version: 20150423010648) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150422093625) do
 
   create_table "posts", force: true do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description"
     t.text     "content"
     t.string   "link"
     t.integer  "userId"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150422093625) do
     t.integer  "likes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "justification"
   end
 
   create_table "users", force: true do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150422093625) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.boolean  "manager"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

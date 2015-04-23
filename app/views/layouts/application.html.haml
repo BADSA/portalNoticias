@@ -26,26 +26,32 @@
           %span.icon-bar
           %span.icon-bar
         %a.navbar-brand.category{:id=> 'Home', :href=>"/"} PortalNoticias
-        .navbar-collapse.collapse.navbar-responsive-collapse
+
+        .navbar-collapse.collapse.navbar-responsive-collapse.pull-right.header-buttons
           %ul.nav.navbar-nav
+            %li
+              = text_field_tag 'request', nil, class: 'form-control special_input' , maxlength: "50",id: 'search-textbox'
+
             - if user_signed_in?
               %li
-                %a{:href=>'#'}
-                  %i.fa.fa-lg.fa-user{:title => "Buscar"}              
-            - else
-              =render 'login'
-
-            %li
-              %a{:href=>'#'}
-                %i.fa.fa-lg.fa-search{:title => "Buscar"}
-            - if user_signed_in?
+                %a
+                  %i.fa.fa-lg.fa-search{:title => "Buscar",:id => 'search-btn'}            
+              %li
+                %a{:href=>edit_user_registration_path}
+                  %i.fa.fa-lg.fa-user{:title => "Perfil"}
+                  =current_user.name
               %li
                 %a{:href=>new_post_path}
                   %i.fa.fa-pencil.fa-lg{:title => "Escribir noticia"}
               %li
                 = link_to destroy_user_session_path, method: :delete do
                   %i.fa.fa-power-off.fa-lg{:title => "Salir"} 
-                /%a{:href=>destroy_user_session_path,:method => :delete}
+
+            - else
+              %li
+                %a
+                  %i.fa.fa-lg.fa-search{:title => "Buscar",:id => 'search-btn'}
+              =render 'login'
                   
 
 

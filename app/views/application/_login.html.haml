@@ -1,5 +1,5 @@
 %li#sign-in-option
-  %a{:href=>'#'}
+  %a
     %i.fa.fa-sign-in.fa-lg
   %div.sign-in
     %h4 Iniciar sesion
@@ -12,16 +12,16 @@
       = password_field_tag 'user[password]' 
 
       = check_box_tag 'user[remember_me]'
-      = label_tag 'user[remember_me]', 'Remember me'
+      = label_tag 'user[remember_me]', 'Recordarme'
 
       %button.btn.btn-default#signinbtn Iniciar
       /= link_to "Forgot your password?", new_password_path(:user)
       /=render "devise/shared/links", resource_name: resource_name
       - if devise_mapping.registerable? && controller_name != 'registrations'
-        = link_to "Sign up", new_registration_path(resource_name)
+        = link_to "Registrarte", new_registration_path(resource_name)
         %br/
 
       - if devise_mapping.omniauthable?
         - resource_class.omniauth_providers.each do |provider|
-          = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
+          = link_to "Entrar con #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
           %br/      
