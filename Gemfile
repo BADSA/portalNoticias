@@ -52,3 +52,11 @@ gem 'haml-rails'
 gem 'gon'
 
 gem 'owlcarousel-rails'
+
+#Devise for user accounts
+gem 'devise'
+
+#For omniauth
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
