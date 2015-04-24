@@ -51,8 +51,7 @@
             %li
               %a{:href=>'#'}
                 %i.fa.fa-lg.fa-search
-
-
+    = render "modal"
     .container
       .row
         .col-lg-9
@@ -69,7 +68,8 @@
                     %img.pull-left{:src => asset_path("image.png"), :alt=> 'Imagen de la noticia'}
 
                   %div.col-md-8
-                    %h3= post.title
+                    %a.clicable-link{href:'#',id:post.id}
+                      %h3= post.title
 
 
                     %ul.footer-info
@@ -85,7 +85,7 @@
 
                     %p= post.description
 
-                    %a{:href=>'post.link'} Seguir Link
+                    %a{:href=>post.link} Seguir Link
 
                   %ul.social-info
                     %li

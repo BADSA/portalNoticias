@@ -1,0 +1,11 @@
+%button.btn.btn-primary{"data-target" => ".bs-example-modal-lg", "data-toggle" => "modal", :type => "button"} Large modal
+.modal.fade.bs-example-modal-lg{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg
+    .modal-content
+      \...
+      %p
+        %b Title:
+        = @post.title
+      %p
+        %b Description:
+        #= @post.description
