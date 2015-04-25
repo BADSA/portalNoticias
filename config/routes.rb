@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :posts
   
+  post '/comments', to: 'comments#create'
+  post '/vote', to: 'vote#vote'
+  post '/uncomment', to: 'comments#destroyComment'
   #get 'home/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

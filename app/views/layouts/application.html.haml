@@ -27,24 +27,7 @@
           %span.icon-bar
         %a.navbar-brand(href="/") PortalNoticias
         .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li.category{:value=> 0}
-              %a Inicio
-            - @categories.each do |category|
-              %li.category{:value=> category.id}
-                %a
-                  =category.name
-
-            =render 'login'
-
-            %li
-              %a{:href=>'#'}
-                %i.fa.fa-lg.fa-search
-            - if user_signed_in?
-              %li
-                %a{:href=>'#'}
-                  %i.fa.fa-pencil.fa-lg
-
+          
 
     .container
       = yield

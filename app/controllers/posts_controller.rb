@@ -16,6 +16,10 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find(params[:id])
+    @comments = Comment.where('postId = ?', params[:id])
+    render :layout => false
+
   end
 
   # GET /posts/new
@@ -67,7 +71,8 @@ class PostsController < ApplicationController
     end
   end
 
-  def  post_info
+  def  comment
+    @comment = Comment.new(comment_params)
   end
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -78,5 +83,9 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :description, :content, :link, :userId, :date, :catId, :votes, :numComments, :status)
+    end
+
+    def comment_params
+      params.require(:comment).permit(:id, :userId, :content, :date)
     end
 end

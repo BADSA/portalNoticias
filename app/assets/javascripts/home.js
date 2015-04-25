@@ -5,6 +5,7 @@ $(document).ready(function () {
   $.ajax({
     method: "get",
     url: "/posts",
+    async: false,
     data : { categoryID : home }
     //data: {product: {name:"Un saludo para el otro james", price: 9999, description:"Que risa con jaime"} }
 
@@ -23,4 +24,5 @@ $(document).ready(function () {
     });
   });
 
+  
 });
