@@ -1,0 +1,81 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "Portal de Noticias"
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+    = stylesheet_link_tag "application", :media => "all"
+    = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
+    = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
+    = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
+    = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+    = javascript_include_tag "application"
+
+
+  %body
+    .navbar.navbar-default.navbar-static-top
+      .container
+        %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand(href="/") PortalNoticias
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          %ul.nav.navbar-nav
+            %li= link_to "Inicio", "#"
+            %li= link_to "Deportes", "#"
+            %li= link_to "Salud", "#"
+            %li= link_to "Tecnologia", "#"
+            %li= link_to "Sucesos", "#"
+            %li= link_to "Entretenimiento", "#"
+            %li= link_to "Mundo", "#"
+            %li= link_to "Ciencia", "#"
+            %li= link_to "Economia", "#"
+            %li= link_to "Mundo", "#"
+            %li#sign-in-option
+              %a{:href=>'#'}
+                %i.fa.fa-lg.fa-user
+              %ul.sign-in
+                %li= link_to "Iniciar con Facebook",""
+                %li= link_to "Iniciar con Twitter",""
+                %li= link_to "Registrarse",""
+            %li
+              %a{:href=>'#'}
+                %i.fa.fa-lg.fa-search
+
+
+    .container
+      .row
+        .col-lg-9
+          = bootstrap_flash
+          = yield
+
+          %h1
+            %b= @post.title
+            %img.pull-left{:src => asset_path("image.png"), :alt=> 'Imagen de la noticia'}
+            %p= @post.content
+            %p
+              %b= @post.name
+
+
+
+        .col-lg-3
+          .well.sidebar-nav
+            %h3 Destacados
+            %ul.nav.nav-list
+              %li= link_to "America golea a Heredia", "#"
+              %li= link_to "Javier se estresa porque los estudiantes no van a clases", "#"
+              %li= link_to "Gran presentacion del duo James-Tuquini en baile acrobatico", "#"
+              %li= link_to "Costa Rica con gran cantidad de turismo", "#"
+              %li= link_to "Otra noticia inventada", "#"
+              %li= link_to "Nasa organiza evento en el TEC sede Cartago", "#"
+              %li= link_to "Accidente en la ruta 32 deja 4 heridos", "#"
+    %footer.shadowed
+      %a{:href => 'https://github.com/BADSA'}
+        %p &copy; BADSA Corp 2015        
