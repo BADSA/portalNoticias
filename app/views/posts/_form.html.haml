@@ -1,0 +1,22 @@
+.well
+  = form_for @post do |f|
+    .form-group
+      %label.control-label Titulo de la noticia
+      = f.text_field :title, :class => "form-control", maxlength: "80"
+    .form-group
+      %label.control-label Categoría
+      = f.select(:category, ['Mundo', 'Sucesos', 'Deportes', 'Entretenimiento', 'Tecnologia', 'Ciencia', 'Salud', 'Economia'], {}, { :class => 'form-control'})
+    .form-group
+      %label.control-label Enlace de referencia
+      = f.text_field :link, :class => "form-control"
+    .form-group
+      %label.control-label Descripcion de la noticia
+      %p#summary-length 450
+      = f.text_area :description, :class => "form-control", :id => "input-summary", maxlength: "450", rows: "5"
+    .form-group
+      %label.control-label Cuerpo de la noticia
+      %p#body-length 5000
+      = f.text_area :content, :class => "form-control", :id => "input-body", maxlength: "5000", rows: "10"
+    .actions
+      = f.submit "Crear", :class => "btn btn-default final-button"
+%script{:src => "/assets/create_post.js" }

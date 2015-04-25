@@ -1,0 +1,53 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+      %h3#post-modal-title.modal-title= @post.title
+      - if user_signed_in?
+        - @votes = Vote.where('postId = ? and userId = ?', @post.id, current_user.id)
+        - if @votes.size == 0 
+          %button#vote-unvote-post.btn.btn-lg.btn-default.pull-right.vote-button{value:1} Dar voto
+        - else
+          %button#vote-unvote-post.btn.btn-lg.btn-default.pull-right.vote-button{value:2} Remover voto
+      %br
+      %small#post-description= @post.description
+    .modal-body
+      %label#post-id.hidden= @post.id
+      .row
+        .col-md-2
+          %ul.post-img-slider
+            %li 
+              %img{src: asset_path('image.png')}
+        #post-content.col-md-5= @post.content
+        #post-comments.col-md-4
+          %label#user-name{style: 'display: none'}= current_user.name
+          %h4 Comentarios
+          %ul#post-comment-list.post-comments-list
+            - @comments.each do |c|
+              - @user = User.find(c.userId)
+              - if current_user.manager == true
+                %li.comment-element
+                  %label.hidden= c.id
+                  %i.fa.fa-times.destroy-comment{value: c.id}
+                  %p
+                    %span= @user.name
+                    = c.content
+                  %span= c.created_at.strftime('%d %b %Y %I:%M %p')
+              - else
+                %li.comment-element
+                  %p
+                    %span= @user.name
+                    = c.content
+                  %span= c.created_at.strftime('%d %b %Y %I:%M %p')
+
+          - if user_signed_in?
+            %textarea#comment-content.form-control
+            %br
+            %button#submit-comment.btn.btn-sm.btn-default.pull-right{value: @post.id} Comentar
+      .row
+        .col-md-12
+          - if current_user.manager == true
+            %button#review-post.btn.btn-lg.btn-default.pull-right{value: @post.id} Vetar esta noticia
+
+/%script{src: '/assets/post_view.js'}

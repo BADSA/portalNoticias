@@ -1,0 +1,41 @@
+.modal.fade.bs-example-modal-lg#postModal{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+  %button#submit-comment.btn.btn-sm.btn-default.pull-right Comentar
+.navbar-collapse.collapse.navbar-responsive-collapse.category-div
+  %ul.nav.navbar-nav.category-list
+    %li.category{:id=> 'Deportes'}
+      %a Deportes
+    %li.category{:id=> 'Salud'}
+      %a Salud
+    %li.category{:id=> 'Tecnologia'}
+      %a Tecnologia
+    %li.category{:id=> 'Sucesos'}
+      %a Sucesos
+    %li.category{:id=> 'Entretenimiento'}
+      %a Entretenimiento   
+    %li.category{:id=> 'Mundo'}
+      %a Mundo  
+    %li.category{:id=> 'Ciencia'}
+      %a Ciencia  
+    %li.category{:id=> 'Economia'}
+      %a Economia                                   
+.row
+  .col-lg-9
+    = bootstrap_flash
+    %h1 Ultimas noticias
+
+
+    %ul.posts-list
+      
+    %br
+
+  .col-lg-3
+    .well.sidebar-nav
+      %h3 Destacados
+      %ul.nav.nav-list
+        %li= link_to "America golea a Heredia", "#"
+        %li= link_to "Javier se estresa porque los estudiantes no van a clases", "#"
+        %li= link_to "Gran presentacion del duo James-Tuquini en baile acrobatico", "#"
+        %li= link_to "Costa Rica con gran cantidad de turismo", "#"
+        %li= link_to "Otra noticia inventada", "#"
+        %li= link_to "Nasa organiza evento en el TEC sede Cartago", "#"
+        %li= link_to "Accidente en la ruta 32 deja 4 heridos", "#" 
